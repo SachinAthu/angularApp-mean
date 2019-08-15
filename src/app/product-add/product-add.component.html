@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body">
+      <form #form="ngForm" name="productAddForm" (ngSubmit)="addProduct(form)">
+        <div class="form-group">
+          <label for="pName" class="col-md-4">Product Name</label>
+          <input ngModel #pName="ngModel" id="pName" name="pName" type="text" class="form-control" required/>
+          <div class="alert alert-danger" *ngIf="pName.touched && pName.invalid">
+            Product Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pDescription" class="col-md-4">Product Description </label>
+          <textarea #pDescription="ngModel" ngModel id="pDescription" name="pDescription" class="form-control" rows = 7 cols = "5" required>
+          </textarea>
+          <div class="alert alert-danger" *ngIf="pDescription.touched && pDescription.invalid">
+            Product Description is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pPrice" class="col-md-4">Product Price</label>
+          <input #pPrice="ngModel" ngModel id="pPrice" name="pPrice" type="number" class="form-control" required/>
+          <div class="alert alert-danger" *ngIf="pPrice.touched && pPrice.invalid">
+            Product Price is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary"
+            [disabled]="form.invalid"
+          >
+            Create Product
+          </button>
+        </div>
+      </form>
+    </div>
+</div>
